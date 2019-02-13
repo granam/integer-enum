@@ -1,99 +1,46 @@
-Doctrine Integer enum
-=====================
+# Enumeration with integers
 
-[![Build Status](https://travis-ci.org/jaroslavtyc/doctrineum-integer.svg?branch=master)](https://travis-ci.org/jaroslavtyc/doctrineum-integer)
-[![Test Coverage](https://codeclimate.com/github/jaroslavtyc/doctrineum-integer/badges/coverage.svg)](https://codeclimate.com/github/jaroslavtyc/doctrineum-integer/coverage)
-[![License](https://poser.pugx.org/doctrineum/integer/license)](https://packagist.org/packages/doctrineum/integer)
+## <span id="usage">Usage</span>
+1. [Use enum](#use-enum)
+2. [NULL is NULL, not Enum](#null-is-null-enum-can-not-hold-it)
+3. [Installation](#installation)
 
-## About
-Adds [Enum](http://en.wikipedia.org/wiki/Enumerated_type) to [Doctrine ORM](http://www.doctrine-project.org/)
-(can be used as a `@Column(type="integer_enum")`).
+## Use enum
+```php
+<?php
+use \Granam\IntegerEnum\IntegerEnum;
 
-##Usage
+$enum = IntegerEnum::getEnum(12345);
+echo $enum->getValue(); // 12345
+var_dump($enum->is('12345')); // false
+var_dump($enum->is(12345)); // true
+var_dump($enum->is($enum)); // true
+var_dump($enum->is(IntegerEnum::getEnum(12345))); // true
+var_dump($enum->is(IntegerEnum::getEnum(99999))); // false
+```
+
+## NULL is NULL, enum can not hold it
+You **can not** create IntegerEnum with NULL value. Just use NULL directly for such value.
 
 ```php
 <?php
-
-use Doctrine\ORM\Mapping as ORM;
-use Doctrineum\Integer\IntegerEnum;
-
-/**
- * @ORM\Entity()
- */
-class Journey
-{
-    /**
-     * @var int
-     * @ORM\Id() @ORM\GeneratedValue(strategy="AUTO") @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
-     * @var IntegerEnum
-     * @ORM\Column(type="integer_enum")
-     */
-    private $distanceInKm;
-    
-    public function __construct(IntegerEnum $distanceInKm)
-    {
-        $this->distanceInKm = $distanceInKm;
-    }
-
-    /**
-     * @return IntegerEnum
-     */
-    public function getDistanceInKm()
-    {
-        return $this->distanceInKm;
-    }
+try {
+    \Granam\IntegerEnum\IntegerEnum::getEnum(null);
+} catch(\Granam\IntegerEnum\Exceptions\UnexpectedValueToConvert $unexpectedValueToEnum) {
+    echo $unexpectedValueToEnum->getMessage(); // Expected scalar or object with __toString method on strict mode, got NULL
 }
-
-$toSun = new Journey(IntegerEnum::getEnum(152100000));
-
-/** @var \Doctrine\ORM\EntityManager $entityManager */
-$entityManager->persist($toSun);
-$entityManager->flush();
-$entityManager->clear();
-
-/** @var Journey[] $StarTracks */
-$StarTracks = $entityManager->createQuery(
-    "SELECT j FROM Journey j WHERE j.distanceInKm >= 1000000"
-)->getResult();
-
-var_dump($StarTracks[0]->getDistanceInKm()->getValue()); // 152100000;
 ```
 
-##Installation
+## Installation
 
-Add it to your list of Composer dependencies (or by manual edit your composer.json, the `require` section)
-
-```sh
-composer require jaroslavtyc/doctrineum-integer
+```bash
+composer.phar require granam/integer-enum
 ```
 
-## Doctrine integration
+or manually edit composer.json at your project and `"require":` block (extend existing)
 
-Register new DBAL type:
-
-```php
-<?php
-
-use Doctrineum\Integer\IntegerEnumType;
-
-IntegerEnumType::registerSelf();
-```
-
-When using Symfony with Doctrine you can do the same as above by configuration:
-
-```yaml
-# app/config/config.yml
-
-# Doctrine Configuration
-doctrine:
-    dbal:
-        # ...
-        mapping_types:
-            integer_enum: integer_enum
-        types:
-            integer_enum: Doctrineum\Integer\IntegerEnumType
+```json
+"require": {
+    "granam/integer-enum": "dev-master"
+}
 ```
