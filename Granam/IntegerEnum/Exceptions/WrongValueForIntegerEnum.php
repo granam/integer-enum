@@ -3,7 +3,7 @@ namespace Granam\IntegerEnum\Exceptions;
 
 use Granam\ScalarEnum\Exceptions\UnexpectedValueToEnum;
 
-class UnexpectedValueToConvert extends UnexpectedValueToEnum implements Logic
+class WrongValueForIntegerEnum extends UnexpectedValueToEnum implements Logic
 {
 
 }

@@ -105,7 +105,7 @@ class IntegerEnumTest extends TestCase
 
     /**
      * @test
-     * @expectedException \Granam\IntegerEnum\Exceptions\UnexpectedValueToConvert
+     * @expectedException \Granam\IntegerEnum\Exceptions\WrongValueForIntegerEnum
      */
     public function string_with_partial_integer_cause_exception(): void
     {
@@ -127,7 +127,7 @@ class IntegerEnumTest extends TestCase
 
     /**
      * @test
-     * @expectedException \Granam\IntegerEnum\Exceptions\UnexpectedValueToConvert
+     * @expectedException \Granam\IntegerEnum\Exceptions\WrongValueForIntegerEnum
      */
     public function to_string_object_with_non_numeric_value_cause_exception(): void
     {
@@ -137,7 +137,7 @@ class IntegerEnumTest extends TestCase
 
     /**
      * @test
-     * @expectedException \Granam\IntegerEnum\Exceptions\UnexpectedValueToConvert
+     * @expectedException \Granam\IntegerEnum\Exceptions\WrongValueForIntegerEnum
      */
     public function empty_string_cause_exception(): void
     {
@@ -147,7 +147,7 @@ class IntegerEnumTest extends TestCase
 
     /**
      * @test
-     * @expectedException \Granam\IntegerEnum\Exceptions\UnexpectedValueToConvert
+     * @expectedException \Granam\IntegerEnum\Exceptions\WrongValueForIntegerEnum
      */
     public function null_cause_exception(): void
     {

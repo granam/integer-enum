@@ -18,7 +18,7 @@ class IntegerEnum extends ScalarEnum implements IntegerEnumInterface
      *
      * @param mixed $enumValue
      * @return int
-     * @throws \Granam\IntegerEnum\Exceptions\UnexpectedValueToConvert
+     * @throws \Granam\IntegerEnum\Exceptions\WrongValueForIntegerEnum
      */
     protected static function convertToEnumFinalValue($enumValue): int
     {
@@ -26,7 +26,7 @@ class IntegerEnum extends ScalarEnum implements IntegerEnumInterface
             return ToInteger::toInteger($enumValue, true /* strict */);
         } catch (\Granam\Integer\Tools\Exceptions\WrongParameterType $exception) {
             // wrapping the exception by local one
-            throw new Exceptions\UnexpectedValueToConvert($exception->getMessage(), $exception->getCode(), $exception);
+            throw new Exceptions\WrongValueForIntegerEnum($exception->getMessage(), $exception->getCode(), $exception);
         }
     }
 
