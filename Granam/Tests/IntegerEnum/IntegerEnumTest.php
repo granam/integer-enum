@@ -75,7 +75,7 @@ class IntegerEnumTest extends TestCase
 
     /**
      * @test
-     * @expectedException \Granam\ScalarEnum\Exceptions\UnexpectedValueToEnum
+     * @expectedException \Granam\IntegerEnum\Exceptions\WrongValueForIntegerEnum
      */
     public function float_with_decimal_cause_exception(): void
     {
@@ -95,7 +95,7 @@ class IntegerEnumTest extends TestCase
 
     /**
      * @test
-     * @expectedException \Granam\ScalarEnum\Exceptions\UnexpectedValueToEnum
+     * @expectedException \Granam\IntegerEnum\Exceptions\WrongValueForIntegerEnum
      */
     public function string_float_with_decimal_cause_exception(): void
     {

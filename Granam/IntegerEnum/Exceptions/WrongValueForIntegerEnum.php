@@ -1,9 +1,9 @@
 <?php
 namespace Granam\IntegerEnum\Exceptions;
 
-use Granam\ScalarEnum\Exceptions\UnexpectedValueToEnum;
+use Granam\ScalarEnum\Exceptions\WrongValueForScalarEnum;
 
-class WrongValueForIntegerEnum extends UnexpectedValueToEnum implements Logic
+class WrongValueForIntegerEnum extends WrongValueForScalarEnum implements Logic
 {
 
 }
