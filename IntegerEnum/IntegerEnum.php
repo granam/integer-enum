@@ -7,7 +7,6 @@ use Granam\ScalarEnum\ScalarEnum;
 
 /**
  * @method static IntegerEnum getEnum($value)
- * @method int getValue()
  */
 class IntegerEnum extends ScalarEnum implements IntegerEnumInterface
 {
@@ -27,6 +26,11 @@ class IntegerEnum extends ScalarEnum implements IntegerEnumInterface
             // wrapping the exception by local one
             throw new Exceptions\WrongValueForIntegerEnum($exception->getMessage(), $exception->getCode(), $exception);
         }
+    }
+
+    public function getValue(): int
+    {
+        return parent::getValue();
     }
 
 }
