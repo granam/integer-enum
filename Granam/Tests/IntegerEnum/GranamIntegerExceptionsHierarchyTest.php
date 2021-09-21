@@ -7,31 +7,24 @@ use Granam\Tests\ExceptionsHierarchy\Exceptions\AbstractExceptionsHierarchyTest;
 
 class GranamIntegerExceptionsHierarchyTest extends AbstractExceptionsHierarchyTest
 {
-    /**
-     * @return string
-     */
     protected function getTestedNamespace(): string
     {
         return $this->getRootNamespace();
     }
 
-    /**
-     * @return string
-     */
     protected function getRootNamespace(): string
     {
         return str_replace('\Tests', '', __NAMESPACE__);
     }
 
     /**
-     * @return string
-     * @throws \ReflectionException
+     * @return string[]
      */
-    protected function getExternalRootNamespaces(): string
+    protected function getExternalRootNamespaces(): array
     {
-        $externalRootReflection = new \ReflectionClass(ScalarEnumInterface::class);
-
-        return $externalRootReflection->getNamespaceName();
+        return [
+            (new \ReflectionClass(ScalarEnumInterface::class))->getNamespaceName(),
+        ];
     }
 
 }

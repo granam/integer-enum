@@ -16,10 +16,16 @@
       "Granam\\": "Granam/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Granam\\Tests\\ExceptionsHierarchy\\": "vendor/granam/exceptions-hierarchy/tests/ExceptionsHierarchy",
+      "Granam\\Tests\\ScalarEnum\\": "vendor/granam/scalar-enum/tests/ScalarEnum"
+    }
+  },
   "require": {
     "php": ">=7.1",
     "granam/scalar-enum": "^1.1",
-    "granam/integer": "^7.0"
+    "granam/integer": "~7.0.0"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",
