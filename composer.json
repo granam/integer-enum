@@ -28,7 +28,7 @@
     "granam/integer": "^7.0"
   },
   "require-dev": {
-    "roave/security-advisories": "dev-master",
+    "roave/security-advisories": "dev-latest",
     "granam/exceptions-hierarchy": "^5.0",
     "phpunit/phpunit": "^9.0",
     "mockery/mockery": "^1.2"
