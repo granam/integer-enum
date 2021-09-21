@@ -19,7 +19,8 @@
   "autoload-dev": {
     "psr-4": {
       "Granam\\Tests\\IntegerEnum\\": "tests/IntegerEnum",
-      "Granam\\Tests\\ExceptionsHierarchy\\": "vendor/granam/exceptions-hierarchy/tests/ExceptionsHierarchy"
+      "Granam\\Tests\\ExceptionsHierarchy\\": "vendor/granam/exceptions-hierarchy/tests/ExceptionsHierarchy",
+      "Granam\\Tests\\ScalarEnum\\": "vendor/granam/scalar-enum/tests/ScalarEnum"
     }
   },
   "require": {
